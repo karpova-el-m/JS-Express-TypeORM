@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/header'); %>
+</head>
+<body>
+    <%- include('./partials/navbar'); %>
+    <div class="container">
+        <h1> <%= title %></h1>
+        <div id="app">
+            <form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Post ID</th>
+                        <th scope="col">Author name</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Publication date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% titleBd.forEach(function(post) { %>
+                        <tr>
+                        <td><%= post.postId %></td>
+                        <td><%= post.authorName %></td>
+                        <td><%= post.title %></td>
+                        <td><%= post.location %></td>
+                        <td><%= post.publicationDate %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </form>
+            <form>
+                <select id="postSelect" class="form-select form-select-md mb-3" onchange="if (this.value) window.location.href=this.value">
+                    <option value="" disabled selected> - Open Post by ID - </option>
+                    <% titleBd.forEach(function(post) { %>
+                    <option value="<%= `http://localhost:3000/posts/${post.postId}` %>">
+                        <%= post.postId %>
+                    </option>
+                    <% }); %>
+                </select>
+            </form>
+            <form>
+                <select id="postSelect" class="form-select form-select-md mb-3" onchange="if (this.value) window.location.href=this.value">
+                    <option value="" disabled selected> - Delete Post by ID - </option>
+                    <% titleBd.forEach(function(post) { %>
+                    <option value="<%= `http://localhost:3000/posts/delete/${post.postId}` %>">
+                        <%= post.postId %>
+                    </option>
+                    <% }); %>
+                </select>
+            </form>
+            <form>
+                <select id="postSelect" class="form-select form-select-md mb-3" onchange="if (this.value) window.location.href=this.value">
+                    <option value="" disabled selected> - Update Post by ID - </option>
+                    <% titleBd.forEach(function(post) { %>
+                    <option value="<%= `http://localhost:3000/posts/update/${post.postId}` %>">
+                        <%= post.postId %>
+                    </option>
+                    <% }); %>
+                </select>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

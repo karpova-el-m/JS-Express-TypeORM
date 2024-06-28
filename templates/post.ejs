@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/header'); %>
+</head>
+<body>
+    <%- include('./partials/navbar'); %>
+    <div class="container">
+        <h1> <%= title %></h1>
+    </div>
+    <div class="container">
+        <div>
+            <form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Author name</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Publication date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 1; i < 2; i += 1) { %> 
+                        <tr>
+                        <td><%= post.authorName %></td>
+                        <td><%= post.title %></td>
+                        <td><%= post.location %></td>
+                        <td><%= post.publicationDate %></td>
+                        </tr>
+                        <% }; %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/footer'); %>
+</body>
+</html>
